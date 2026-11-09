@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Zain Hashmi - Premium Collection",
+        "sub_heading": "New Arrivals | Best Quality | Fast Delivery",
+        "button_text": "Shop Now",
+        "button_link": "/collections/all"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "Featured Products",
+        "collection": "all",
+        "products_to_show": 8
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "What Our Customers Say"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_products",
+    "testimonials"
+  ]
+}
