@@ -1,0 +1,36 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": null,
+          "header_bg": "#ffffff",
+          "header_text_color": "#000000"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_about": "Zain Hashmi - Premium Quality Products with Fast Delivery All Over Pakistan. Trusted by thousands of customers."
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {},
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      }
+    }
+  },
+  "presets": []
+}
