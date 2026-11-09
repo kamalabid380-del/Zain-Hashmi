@@ -1,0 +1,65 @@
+<header class="site-header">
+  <div class="header-top-bar">
+    <p>Free Delivery on Orders Over Rs. 5000 | Zain Hashmi Collection</p>
+  </div>
+
+  <div class="header-main">
+    <div class="header-logo">
+      <a href="/">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}" width="150">
+        {% else %}
+          <h1>{{ shop.name }}</h1>
+        {% endif %}
+      </a>
+    </div>
+
+    <nav class="header-menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/collections/all">Shop All</a></li>
+        <li><a href="/collections/new-arrivals">New Arrivals</a></li>
+        <li><a href="/pages/about-us">About Us</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-icons">
+      <a href="/search" class="header-search">🔍 Search</a>
+      <a href="/account" class="header-account">👤 Account</a>
+      <a href="/cart" class="header-cart">
+        🛒 Cart (<span id="cart-count">{{ cart.item_count }}</span>)
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "color",
+      "id": "header_bg",
+      "label": "Header Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header Text Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}
