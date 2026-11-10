@@ -1,77 +1,82 @@
 <footer class="site-footer">
   <div class="footer-main">
-    <div class="footer-column">
+    <div class="footer-col">
       <h3>{{ shop.name }}</h3>
-      <p>{{ section.settings.footer_about }}</p>
-      <p>📍 Lahore, Punjab, Pakistan</p>
-      <p>📞 +92 300 1234567</p>
-      <p>✉️ support@zainhashmi.com</p>
+      <p>{{ section.settings.about }}</p>
+      {%- if settings.contact_address != blank -%}<p>{{ settings.contact_address }}</p>{%- endif -%}
+      {%- if settings.contact_phone != blank -%}<p><a href="tel:{{ settings.contact_phone | remove: ' ' }}">{{ settings.contact_phone }}</a></p>{%- endif -%}
+      {%- if settings.contact_email != blank -%}<p><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></p>{%- endif -%}
+      <div class="footer-social">
+        {%- if settings.social_instagram != blank -%}
+          <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.3-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.3-.4 1.3-.1 1.7-.1 4.9-.1zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.5a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
+        {%- endif -%}
+        {%- if settings.social_facebook != blank -%}
+          <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.6V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.4H7.6V13h2.7v8h3.2z"/></svg></a>
+        {%- endif -%}
+        {%- if settings.social_tiktok != blank -%}
+          <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.4 2.1 1.8 3.5 3.9 3.8v2.8c-1.5 0-2.8-.5-3.9-1.3v6.3c0 3.4-2.6 6-5.9 6-3.2 0-5.8-2.6-5.8-5.9 0-3.4 2.9-6 6.4-5.8v2.9c-.4-.1-.8-.2-1.2-.2-1.7 0-3 1.3-3 3s1.3 3 3 3c1.8 0 3.2-1.4 3.2-3.2V3h3.3z"/></svg></a>
+        {%- endif -%}
+        {%- if settings.contact_whatsapp != blank -%}
+          <a href="https://wa.me/{{ settings.contact_whatsapp | remove: ' ' | remove: '+' }}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg></a>
+        {%- endif -%}
+      </div>
     </div>
 
-    <div class="footer-column">
+    <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/collections/all">Shop All</a></li>
-        <li><a href="/pages/about-us">About Us</a></li>
-        <li><a href="/pages/contact">Contact Us</a></li>
+        {%- assign fmenu = linklists[section.settings.menu].links -%}
+        {%- if fmenu.size > 0 -%}
+          {%- for link in fmenu -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+        {%- else -%}
+          <li><a href="{{ routes.root_url }}">Home</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
+          <li><a href="{{ routes.cart_url }}">Bag</a></li>
+        {%- endif -%}
       </ul>
     </div>
 
-    <div class="footer-column">
+    <div class="footer-col">
       <h4>Customer Service</h4>
       <ul>
-        <li><a href="/pages/shipping-policy">Shipping Policy</a></li>
-        <li><a href="/pages/return-policy">Return & Exchange</a></li>
-        <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/pages/terms-of-service">Terms of Service</a></li>
+        <li><a href="{{ routes.search_url }}">Search</a></li>
+        {%- if shop.privacy_policy != blank -%}<li><a href="{{ shop.privacy_policy.url }}">Privacy Policy</a></li>{%- endif -%}
+        {%- if shop.refund_policy != blank -%}<li><a href="{{ shop.refund_policy.url }}">Return &amp; Exchange</a></li>{%- endif -%}
+        {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">Shipping Policy</a></li>{%- endif -%}
+        {%- if shop.terms_of_service != blank -%}<li><a href="{{ shop.terms_of_service.url }}">Terms of Service</a></li>{%- endif -%}
       </ul>
     </div>
 
-    <div class="footer-column">
-      <h4>Follow Us</h4>
-      <ul>
-        <li><a href="https://instagram.com/zainhashmi" target="_blank">Instagram</a></li>
-        <li><a href="https://facebook.com/zainhashmi" target="_blank">Facebook</a></li>
-        <li><a href="https://tiktok.com/@zainhashmi" target="_blank">TikTok</a></li>
-        <li><a href="https://wa.me/923001234567" target="_blank">WhatsApp</a></li>
-      </ul>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p>New drops, private previews and launch offers — straight to your inbox.</p>
+      {% form 'customer', class: 'newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="hidden" name="contact[accepts_marketing]" value="true">
+        <input type="email" name="contact[email]" placeholder="Email address" required aria-label="Email address">
+        <button type="submit" class="btn">Join</button>
+        {%- if form.posted_successfully? -%}
+          <p class="nl-success">Thank you for subscribing.</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="nl-error">{{ form.errors | default: errors }}</p>
+        {%- endif -%}
+      {% endform %}
     </div>
   </div>
 
   <div class="footer-bottom">
-    <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All Rights Reserved.</p>
-    <p>Cash on Delivery Available All Over Pakistan</p>
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All Rights Reserved.</p>
+    <span class="cod">Cash on Delivery Available All Over Pakistan</span>
   </div>
 </footer>
-
-<style>
-.site-footer { background: #111; color: #fff; padding: 40px 20px 20px; margin-top: 40px; }
-.footer-main { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; }
-.footer-column { flex: 1; min-width: 200px; }
-.footer-column h3, .footer-column h4 { margin-bottom: 15px; }
-.footer-column ul { list-style: none; padding: 0; }
-.footer-column ul li { margin-bottom: 8px; }
-.footer-column a { color: #ddd; text-decoration: none; }
-.footer-column a:hover { color: #fff; text-decoration: underline; }
-.footer-bottom { text-align: center; border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; font-size: 14px; color: #aaa; }
-</style>
 
 {% schema %}
 {
   "name": "Footer",
   "settings": [
-    {
-      "type": "textarea",
-      "id": "footer_about",
-      "label": "About Text",
-      "default": "Zain Hashmi - Premium Quality Products with Fast Delivery All Over Pakistan. Trusted by thousands of customers."
-    }
-  ],
-  "presets": [
-    {
-      "name": "Footer"
-    }
+    { "type": "textarea", "id": "about", "label": "About text", "default": "Zain Hashmi — premium eastern wear and couture, crafted in Lahore. Trusted by customers across Pakistan." },
+    { "type": "link_list", "id": "menu", "label": "Quick links menu", "default": "footer" }
   ]
 }
 {% endschema %}

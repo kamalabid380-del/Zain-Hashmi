@@ -1,0 +1,68 @@
+<section class="section-pad">
+  <div class="wrap product-layout">
+    <div class="product-gallery">
+      <div class="gallery-main" data-gallery-main>
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.featured_image.alt | escape }}" width="1200">
+        {%- else -%}
+          <div class="card-media--empty" style="aspect-ratio:3/4">{{ product.title | slice: 0 }}</div>
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="gallery-thumbs">
+          {%- for image in product.images -%}
+            <button type="button" data-gallery-thumb data-src="{{ image | image_url: width: 1200 }}" class="{% if forloop.first %}is-active{% endif %}" aria-label="View image {{ forloop.index }}">
+              <img src="{{ image | image_url: width: 200 }}" alt="{{ image.alt | escape }}" width="200" loading="lazy">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-info">
+      <span class="eyebrow">{{ product.type | default: shop.name }}</span>
+      <h1>{{ product.title }}</h1>
+      <p class="product-price">
+        {%- if product.compare_at_price > product.price -%}<span class="compare">{{ product.compare_at_price | money }}</span>{%- endif -%}
+        {{ product.price | money }}
+      </p>
+
+      {% form 'product', product %}
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="field">
+              <label for="Option-{{ forloop.index }}">{{ option.name }}</label>
+              <select id="Option-{{ forloop.index }}" name="options[{{ option.name | escape }}]">
+                {%- for value in option.values -%}
+                  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+        <select name="id" hidden>
+          {%- for variant in product.variants -%}
+            <option value="{{ variant.id }}"{% if variant == product.selected_or_first_available_variant %} selected{% endif %}>{{ variant.title }}</option>
+          {%- endfor -%}
+        </select>
+
+        <div class="qty-row">
+          <div class="field">
+            <label for="Quantity">Qty</label>
+            <input id="Quantity" type="number" name="quantity" value="1" min="1">
+          </div>
+          <button type="submit" class="btn btn--block" {% unless product.available %}disabled{% endunless %}>
+            {%- if product.available -%}Add to Bag{%- else -%}Sold Out{%- endif -%}
+          </button>
+        </div>
+      {% endform %}
+
+      <div class="product-desc">{{ product.description }}</div>
+      <p class="eyebrow" style="color:var(--muted)">Cash on Delivery &middot; Easy Exchange &middot; Nationwide Shipping</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Product", "settings": [] }
+{% endschema %}

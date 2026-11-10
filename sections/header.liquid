@@ -1,34 +1,51 @@
 <header class="site-header">
-  <div class="header-top-bar">
-    <p>Free Delivery on Orders Over Rs. 5000 | Zain Hashmi Collection</p>
-  </div>
+  {%- if settings.announcement != blank -%}
+    <div class="announcement">{{ settings.announcement }}</div>
+  {%- endif -%}
 
   <div class="header-main">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="HeaderMenu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
     <div class="header-logo">
-      <a href="/">
-        {% if section.settings.logo != blank %}
-          <img src="{{ section.settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}" width="150">
-        {% else %}
-          <h1>{{ shop.name }}</h1>
-        {% endif %}
+      <a href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          <img src="{{ section.settings.logo | image_url: width: 300 }}" alt="{{ shop.name | escape }}" width="150" loading="eager">
+        {%- else -%}
+          <span class="logo-text">{{ shop.name }}</span>
+        {%- endif -%}
       </a>
     </div>
 
-    <nav class="header-menu">
+    <nav class="header-menu" id="HeaderMenu" aria-label="Primary">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/collections/all">Shop All</a></li>
-        <li><a href="/collections/new-arrivals">New Arrivals</a></li>
-        <li><a href="/pages/about-us">About Us</a></li>
-        <li><a href="/pages/contact">Contact</a></li>
+        {%- assign menu = linklists[section.settings.menu].links -%}
+        {%- if menu.size > 0 -%}
+          {%- for link in menu -%}
+            <li><a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+          {%- endfor -%}
+        {%- else -%}
+          <li><a href="{{ routes.root_url }}">Home</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
+          <li><a href="{{ routes.search_url }}">Search</a></li>
+        {%- endif -%}
       </ul>
     </nav>
 
     <div class="header-icons">
-      <a href="/search" class="header-search">🔍 Search</a>
-      <a href="/account" class="header-account">👤 Account</a>
-      <a href="/cart" class="header-cart">
-        🛒 Cart (<span id="cart-count">{{ cart.item_count }}</span>)
+      <a href="{{ routes.search_url }}" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        <span class="lbl">Search</span>
+      </a>
+      <a href="{{ routes.account_url }}" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span class="lbl">Account</span>
+      </a>
+      <a href="{{ routes.cart_url }}" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 13H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="lbl">Bag</span>
+        <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
       </a>
     </div>
   </div>
@@ -38,28 +55,8 @@
 {
   "name": "Header",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    },
-    {
-      "type": "color",
-      "id": "header_bg",
-      "label": "Header Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "header_text_color",
-      "label": "Header Text Color",
-      "default": "#000000"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Header"
-    }
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
   ]
 }
 {% endschema %}

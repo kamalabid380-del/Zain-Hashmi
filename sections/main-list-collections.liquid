@@ -1,0 +1,40 @@
+<div class="collection-hero">
+  <span class="eyebrow">Explore</span>
+  <h1>Collections</h1>
+</div>
+
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    {%- paginate collections by 12 -%}
+      <div class="card-grid--3 card-grid">
+        {%- for collection in collections -%}
+          <a class="product-card reveal" href="{{ collection.url }}">
+            <div class="card-media">
+              {%- if collection.featured_image -%}
+                <img src="{{ collection.featured_image | image_url: width: 700 }}" alt="{{ collection.title | escape }}" width="700" loading="lazy">
+              {%- elsif collection.products.first.featured_image -%}
+                <img src="{{ collection.products.first.featured_image | image_url: width: 700 }}" alt="{{ collection.title | escape }}" width="700" loading="lazy">
+              {%- else -%}
+                <div class="card-media--empty">{{ collection.title | slice: 0 }}</div>
+              {%- endif -%}
+              <div class="card-label"><span class="btn btn--light">View</span></div>
+            </div>
+            <h3 class="card-title">{{ collection.title }}</h3>
+            <p class="card-price">{{ collection.products_count }} pieces</p>
+          </a>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pagination">
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- else -%}<span class="{% if part.title == paginate.current_page %}current{% endif %}">{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collections list", "settings": [] }
+{% endschema %}

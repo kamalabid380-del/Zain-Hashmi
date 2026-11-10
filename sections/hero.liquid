@@ -1,72 +1,32 @@
-<section class="hero-section">
-  <div class="hero-image">
-    {% if section.settings.hero_image != blank %}
-      <img src="{{ section.settings.hero_image | image_url: width: 1600 }}" alt="{{ section.settings.heading }}" width="1600">
-    {% else %}
-      <img src="https://cdn.shopify.com/s/files/1/0533/2089/talon_placeholder.jpg" alt="Zain Hashmi Collection" width="1600">
-    {% endif %}
+<section class="hero">
+  <div class="hero-media{% unless section.settings.hero_image != blank %} hero-media--fallback{% endunless %}">
+    {%- if section.settings.hero_image != blank -%}
+      <img src="{{ section.settings.hero_image | image_url: width: 2000 }}" alt="{{ section.settings.heading | escape }}" width="2000" loading="eager" fetchpriority="high">
+    {%- endif -%}
   </div>
+  <div class="hero-scrim"></div>
 
   <div class="hero-content">
-    <h2>{{ section.settings.heading }}</h2>
+    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+    <h1>{{ section.settings.heading }}</h1>
     <p>{{ section.settings.sub_heading }}</p>
-
-    {% if section.settings.button_text != blank %}
-      <a href="{{ section.settings.button_link }}" class="hero-button">
-        {{ section.settings.button_text }}
-      </a>
-    {% endif %}
+    {%- if section.settings.button_text != blank -%}
+      <a href="{{ section.settings.button_link }}" class="btn btn--light">{{ section.settings.button_text }}</a>
+    {%- endif -%}
   </div>
 </section>
-
-<style>
-.hero-section { position: relative; text-align: center; color: #fff; }
-.hero-section img { width: 100%; height: 500px; object-fit: cover; display: block; }
-.hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.45); padding: 30px 40px; border-radius: 10px; width: 90%; max-width: 600px; }
-.hero-content h2 { font-size: 42px; margin: 0 0 10px; }
-.hero-content p { font-size: 18px; margin: 0 0 20px; }
-.hero-button { background: #000; color: #fff; padding: 14px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; }
-.hero-button:hover { background: #333; }
-</style>
 
 {% schema %}
 {
   "name": "Hero",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Image"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Zain Hashmi - Premium Collection"
-    },
-    {
-      "type": "text",
-      "id": "sub_heading",
-      "label": "Sub Heading",
-      "default": "New Arrivals | Best Quality | Fast Delivery"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "default": "Shop Now"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link",
-      "default": "/collections/all"
-    }
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Haute Couture '25" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Zain Hashmi" },
+    { "type": "text", "id": "sub_heading", "label": "Sub heading", "default": "New Arrivals | Best Quality | Fast Delivery" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Shop Now" },
+    { "type": "url", "id": "button_link", "label": "Button link", "default": "/collections/all" }
   ],
-  "presets": [
-    {
-      "name": "Hero"
-    }
-  ]
+  "presets": [ { "name": "Hero" } ]
 }
 {% endschema %}

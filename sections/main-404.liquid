@@ -1,0 +1,12 @@
+<div class="empty-state">
+  <div class="big">404</div>
+  <h1>Page Not Found</h1>
+  <p>The piece you're looking for has moved or no longer exists.</p>
+  <a class="btn" href="{{ routes.root_url }}">Back Home</a>
+  <div style="height:12px"></div>
+  <a class="btn btn--outline" href="{{ routes.all_products_collection_url }}">Shop the Collection</a>
+</div>
+
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

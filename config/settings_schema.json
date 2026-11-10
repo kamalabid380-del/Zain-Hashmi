@@ -1,0 +1,52 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Zain Hashmi",
+    "theme_version": "1.0.0",
+    "theme_author": "Zain Hashmi",
+    "theme_documentation_url": "https://github.com/kamalabid380-del/Zain-Hashmi",
+    "theme_support_url": "https://github.com/kamalabid380-del/Zain-Hashmi/issues"
+  },
+  {
+    "name": "Brand colors",
+    "settings": [
+      { "type": "color", "id": "color_canvas", "label": "Canvas", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_ink", "label": "Ink", "default": "#141414" },
+      { "type": "color", "id": "color_gold", "label": "Brand gold", "default": "#A98D5F" },
+      { "type": "color", "id": "color_footer", "label": "Footer surface", "default": "#ECECEA" },
+      { "type": "color", "id": "color_muted", "label": "Muted text", "default": "#6E6E6E" },
+      { "type": "color", "id": "color_hairline", "label": "Hairline", "default": "#E3E0DA" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "font_picker", "id": "type_heading", "label": "Heading font", "default": "cormorant-garamond_n4" },
+      { "type": "font_picker", "id": "type_body", "label": "Body font", "default": "jost_n4" }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" },
+      { "type": "text", "id": "announcement", "label": "Announcement text", "default": "COUTURE DE'ÉTÉ — EXPLORE NOW" }
+    ]
+  },
+  {
+    "name": "Contact",
+    "settings": [
+      { "type": "text", "id": "contact_address", "label": "Address", "default": "Building 106, Sector B, Commercial Broadway, Phase 8, DHA, Lahore" },
+      { "type": "text", "id": "contact_phone", "label": "Phone (shown only if set)", "default": "" },
+      { "type": "text", "id": "contact_whatsapp", "label": "WhatsApp digits e.g. 923001234567 (shown only if set)", "default": "" },
+      { "type": "text", "id": "contact_email", "label": "Email (shown only if set)", "default": "" }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL", "default": "https://instagram.com/zainhashmi" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL", "default": "https://facebook.com/zainhashmi" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL", "default": "https://tiktok.com/@zainhashmi" }
+    ]
+  }
+]

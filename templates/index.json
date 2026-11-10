@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Haute Couture '25",
+        "heading": "Zain Hashmi",
+        "sub_heading": "New Arrivals | Best Quality | Fast Delivery",
+        "button_text": "Shop Now",
+        "button_link": "/collections/all"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "The Collection",
+        "heading": "Featured Products",
+        "collection": "all",
+        "products_to_show": 8,
+        "show_view_all": true
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "eyebrow": "Our People",
+        "heading": "What Our Customers Say"
+      },
+      "blocks": {
+        "t1": {
+          "type": "quote",
+          "settings": {
+            "quote": "The fabric and stitching exceeded my expectations. Delivered quickly and the fit was perfect.",
+            "name": "Ayesha K.",
+            "city": "Lahore"
+          }
+        },
+        "t2": {
+          "type": "quote",
+          "settings": {
+            "quote": "Ordered on Cash on Delivery and paid when it arrived. The eastern wear looks even better in person.",
+            "name": "Hamza R.",
+            "city": "Karachi"
+          }
+        },
+        "t3": {
+          "type": "quote",
+          "settings": {
+            "quote": "Exchange was smooth when I needed a different size. Truly a premium experience.",
+            "name": "Fatima S.",
+            "city": "Islamabad"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    }
+  },
+  "order": ["hero", "featured_products", "testimonials"]
+}

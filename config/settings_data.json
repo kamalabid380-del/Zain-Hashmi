@@ -1,36 +1,26 @@
 {
   "current": {
+    "color_canvas": "#FFFFFF",
+    "color_ink": "#141414",
+    "color_gold": "#A98D5F",
+    "color_footer": "#ECECEA",
+    "color_muted": "#6E6E6E",
+    "color_hairline": "#E3E0DA",
+    "type_heading": "cormorant-garamond_n4",
+    "type_body": "jost_n4",
+    "announcement": "COUTURE DE'ÉTÉ — EXPLORE NOW",
+    "contact_address": "Building 106, Sector B, Commercial Broadway, Phase 8, DHA, Lahore",
+    "contact_phone": "",
+    "contact_whatsapp": "",
+    "contact_email": "",
+    "social_instagram": "https://instagram.com/zainhashmi",
+    "social_facebook": "https://facebook.com/zainhashmi",
+    "social_tiktok": "https://tiktok.com/@zainhashmi",
     "sections": {
-      "header": {
-        "type": "header",
-        "settings": {
-          "logo": null,
-          "header_bg": "#ffffff",
-          "header_text_color": "#000000"
-        }
-      },
-      "footer": {
-        "type": "footer",
-        "settings": {
-          "footer_about": "Zain Hashmi - Premium Quality Products with Fast Delivery All Over Pakistan. Trusted by thousands of customers."
-        }
-      }
+      "header": { "type": "header", "settings": { "logo": null } },
+      "footer": { "type": "footer", "settings": {} }
     },
-    "content_for_index": [],
-    "blocks": {},
-    "color_schemes": {
-      "scheme-1": {
-        "settings": {
-          "background": "#ffffff",
-          "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
-        }
-      }
-    }
+    "content_for_index": []
   },
   "presets": []
 }
