@@ -1,7 +1,6 @@
 # Zain Hashmi — Website
 
-Offline-ready copy of https://www.zainhashmi.com
-
+Offline-ready copy of https://www.zainhashmi.org
 - 185 pages: home, 29 collections, 144 products, 11 content pages
 - All CSS, JavaScript, fonts and 850+ images included
 
